@@ -1,0 +1,54 @@
+.positional-react-animations-container {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.positional-react-animations-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+
+.positional-react-animations-coord-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+}
+
+.positional-react-animations-coord-containerShadow {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto;
+  opacity: 0.4;
+}
+
+.positional-react-animations-coord-containerShadow img.positional-react-animations-img {
+  filter: blur(3px) grayscale(80%);
+}
+
+.positional-react-animations-coord-containerShadowIntense {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto;
+  opacity: 0.9;
+}
+
+.positional-react-animations-coord-containerShadowIntense img.positional-react-animations-img {
+  transform: scale(1.01);
+  filter: blur(4px) grayscale(100%);
+}
+
+.positional-react-animations-coord-span {
+  display: block;
+  width: auto;
+  height: auto;
+  position: relative;
+}

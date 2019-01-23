@@ -1,0 +1,49 @@
+{
+  "name": "positional-react-animations",
+  "version": "1.0.0",
+  "description": "Positional based animations for react made simple and easy, just supply coordinates.",
+  "main": "build/positional.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rm -rf build && mkdir build && cp dev/positional.css build/positional.css && babel dev/*.js --out-file build/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/WillMayger/positional-react-animations.git"
+  },
+  "keywords": [
+    "positional",
+    "animations",
+    "parallax",
+    "image",
+    "React",
+    "JavaScript",
+    "js",
+    "ES6",
+    "effects",
+    "simple"
+  ],
+  "author": "Will Mayger",
+  "license": "ISC",
+  "peerDependencies": {
+    "react": "^16.6.3"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.1.5",
+    "@babel/core": "^7.1.6",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/preset-env": "^7.1.6",
+    "@babel/preset-react": "^7.0.0",
+    "eslint": "^5.9.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-react": "^7.11.1"
+  },
+  "dependencies": {
+    "prop-types": "^15.6.2",
+    "react": "^16.8.0-alpha.0",
+    "react-dom": "^16.8.0-alpha.0",
+    "react-scripts": "2.1.3"
+  }
+}

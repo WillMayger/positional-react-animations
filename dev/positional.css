@@ -31,10 +31,10 @@
 }
 
 .positional-react-animations-coord-containerShadow {
-  width: 100%;
-  position: relative;
-  overflow: hidden;
-  margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
   opacity: 0.4;
 }
 
@@ -51,10 +51,10 @@
 }
 
 .positional-react-animations-coord-containerShadowIntense {
-  width: 100%;
-  position: relative;
-  overflow: hidden;
-  margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
   opacity: 0.9;
 }
 

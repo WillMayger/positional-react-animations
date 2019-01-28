@@ -22,7 +22,7 @@ import Positional, { Coord, Img } from 'positional-react-animations';
 
 export default function YourComponent() {
   return (
-    <Positional>
+    <Positional height="100vh" cursorEvent>
       <Coord>
         <span>TEST</span>
       </Coord>
@@ -127,7 +127,7 @@ This must be used in combination with the fullWidth prop within the Positional a
   ```
 
 #### shadow
-This is a prop of type bool, defingin this prop will create a shadow effect on the contents of the coord component that will move at a different speed.
+This is a prop of type bool, defining this prop will create a shadow effect on the contents of the coord component that will move at a different speed.
 
 #### intense
 This is a prop of type bool, Adds more depth to the shadows on the coord.

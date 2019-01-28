@@ -5,7 +5,7 @@
   "main": "build/positional.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rm -rf build && mkdir build && cp dev/positional.css build/positional.css && babel dev/*.js --out-file build/*.js"
+    "build": "rm -rf build && mkdir build && cp dev/positional.css build/positional.css && babel dev/positional.js --out-file build/positional.js && babel dev/coord.js --out-file build/coord.js && babel dev/img.js --out-file build/img.js && babel dev/helpers.js --out-file build/helpers.js"
   },
   "repository": {
     "type": "git",
@@ -26,9 +26,6 @@
   ],
   "author": "Will Mayger",
   "license": "ISC",
-  "peerDependencies": {
-    "react": "^16.6.3"
-  },
   "devDependencies": {
     "@babel/cli": "^7.1.5",
     "@babel/core": "^7.1.6",
@@ -43,8 +40,8 @@
   },
   "dependencies": {
     "prop-types": "^15.6.2",
-    "react": "^16.8.0-alpha.0",
-    "react-dom": "^16.8.0-alpha.0",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
     "react-scripts": "2.1.3"
   }
 }

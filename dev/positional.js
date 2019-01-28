@@ -4,51 +4,55 @@ import './positional.css';
 import CoordComp from './coord';
 import ImgComp from './img';
 
-export default function Positional({
-  children,
-  height,
-  cursorEvent,
-  fullWidth,
-}) {
-  const ref = React.createRef();
+export default class Positional extends React.Component {
+  render() {
+    const {
+      children,
+      height,
+      cursorEvent,
+      fullWidth,
+    } = this.props;
 
-  let childrenWithRef;
+    const ref = React.createRef();
 
-  if (Array.isArray(children)) {
-    childrenWithRef = children.map(child => (
-      {
-        ...child,
+    let childrenWithRef;
+
+    if (Array.isArray(children)) {
+      childrenWithRef = children.map(child => (
+        {
+          ...child,
+          props: {
+            ...child.props,
+            parentRef: ref,
+          },
+        }
+      ));
+    } else {
+      childrenWithRef = {
+        ...children,
         props: {
-          ...child.props,
+          ...children.props,
           parentRef: ref,
         },
-      }
-    ));
-  } else {
-    childrenWithRef = {
-      ...children,
-      props: {
-        ...children.props,
-        parentRef: ref,
-      },
-    };
-  }
+      };
+    }
 
-  if (!cursorEvent) {
-    childrenWithRef = children;
-  }
+    if (!cursorEvent) {
+      childrenWithRef = children;
+    }
 
-  return (
-    <div
-      ref={ref}
-      className="positional-react-animations-container"
-      style={height && !fullWidth ? { height } : null}
-    >
-      <div className={fullWidth ? 'positional-react-animations-innerFull' : 'positional-react-animations-inner'}>
-        {childrenWithRef}
+    return (
+      <div
+        ref={ref}
+        className="positional-react-animations-container"
+        style={height && !fullWidth ? { height } : null}
+      >
+        <div className={fullWidth ? 'positional-react-animations-innerFull' : 'positional-react-animations-inner'}>
+          {childrenWithRef}
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 Positional.propTypes = {

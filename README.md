@@ -1,12 +1,12 @@
-# Positional React Animations - Simple Drag and Drop
+# Positional React Animations - Simple hand crafted cursor animations.
 
-#### A simple drag and drop component for react that is actually intuitive and easy to use.
+#### A very easy package to create cool cursor based animations for react.
 
 ## Contents.
  - Guide
  - API / Props
 
-## Guide - You can use SimpleDnD three very easy steps.
+## Guide - You can use Positional React Animations very easily and quickly.
 
 ### Step 1.
 Install and Import SimpleDnD into your component.
@@ -14,123 +14,143 @@ Install and Import SimpleDnD into your component.
 npm install positional-react-animations --save
 ```
 
-In your react component:
-```
-...
-import SimpleDnD from 'simplednd';
-```
-
 ### Step 2.
-Have an array saved into your state.
-```
-export default class YourComponent extends React.Component {
-  state = {
-    ...
-    someArray: [{ some: 'stuff' }, { some: 'in' }, { some: 'here' }],
-  }
-  ...
-}
-```
-
-### Step 3.
-In the render method of your component include Simple DnD with your array and a way to update the state.
+Add in the components like so:
 ```
 ...
-render() {
-  const {
-    someArray,
-  } = this.state;
+import Positional, { Coord, Img } from 'positional-react-animations';
 
+export default function YourComponent() {
   return (
-    <SimpleDnD
-      someArray={someArray}
-      saveToState={nextArray => this.setState({ someArray: nextArray })}
-    />
-  )
+    <Positional>
+      <Coord>
+        <span>TEST</span>
+      </Coord>
+      <Coord x={20} y={70}>
+        <span>TEST</span>
+      </Coord>
+      <Coord x={60} y={40}>
+        <span>TEST</span>
+      </Coord>
+    </Positional>
+  );
 }
-...
 ```
+
+### Step 3 (Optional).
+Use the pre-packaged `<Img />` component to make use of the animation with images.
+```
+...
+import Positional, { Coord, Img } from 'positional-react-animations';
+
+export default function YourComponent() {
+  return (
+    <Positional cursorEvent height="100vh">
+      <Coord>
+        <Img src={myImage} width={500}>
+      </Coord>
+      <Coord x={20} y={70}>
+        <Img src={myOtherImage} width={380}>
+      </Coord>
+      <Coord x={60} y={40}>
+        <Img src={myLastImage} width={1000}>
+      </Coord>
+    </Positional>
+  );
+}
+```
+The width prop is more of a `max-width` in this situation.
 
 ## API / Props
 
-### `someArray`
-You will need to pass in an array of objects.
+### `Positional`
+The parent / container component.
 
-An Example:
-Your state / array:
+Props:
+ - fullWidth
+ - height
+ - cursorEvent
+
+#### fullWidth
+This is a prop of type bool, it will tell the positional element that you want it to span the full screen.
+This must be used in combination with the fullWidth prop within the Coord and Img components.
+
+#### height
+This is a prop of type string, it allows any css value followed by a unit. for example:
 ```
-state = {
+  height="100vh"
+```
+
+#### cursorEvent
+This is a prop of type bool, that will enable or disable the cursor based animation.
+It is defaulted to false, so this must be defined to make use of the animation.
+For example:
+```
+<Positional
+  cursorEvent
+>
   ...
-  someArray: [{ some: 'stuff' }, { some: 'in' }, { some: 'here' }],
-}
+</Positional>
 ```
 
-Your SimpleDnD component:
-```
-<SimpleDnD
-  someArray={someArray}
-/>
-```
+### `Coord`
+The child elements that sit inside the `Positional` component.
 
-### `saveToState`
-You need to pass in a function that will update your states array with a new array
+Props:
+ - x
+ - y
+ - fullWidth
+ - medias,
+ - shadow,
+ - intense,
 
-An Example:
-```
-<SimpleDnD
-  saveToState={nextArray => this.setState({ someArray: nextArray })}
-/>
-```
+ #### x, y
+ The x / y props are used to plot the position of the component.
+ They are of type number.
+ Think of x as the percentage from the left and y the percentage from the top.
+ The default is 50 for both which will center the component.
 
-### `ArrayTemplate`
-You need to pass in a node (element) to structure out how you want your array objects to be displayed.
+ #### fullWidth
+This is a prop of type bool, it will tell the coord element that you want it to span the full screen.
+This must be used in combination with the fullWidth prop within the Positional and Img components.
 
-An Example:
+ #### medias
+  Media queries for the coordinates.
+  For example:
+  ```
+  <Coord
+    medias={[
+      { query: 768, x: 40, y: 40 },
+      { query: 1200, x: 60, y: 60 },
+    ]}
+  />
+  ```
 
-Your state / array:
-```
-state = {
-  ...
-  someArray: [{ some: 'stuff' }, { some: 'in' }, { some: 'here' }],
-}
-```
+#### shadow
+This is a prop of type bool, defingin this prop will create a shadow effect on the contents of the coord component that will move at a different speed.
 
-Your SimpleDnD component:
-```
-<SimpleDnD
-  ...
-  ArrayTemplate={
-    ({ some }) => (
-      <div>
-        <h4>
-          {some}
-        </h4>
-      </div>
-    )
-  }
-/>
+#### intense
+This is a prop of type bool, Adds more depth to the shadows on the coord.
 
-```
 
-### `LastTileTemplate`
-You need to pass in a node (element) to add in as the last element in the flex grid.
+### `Img`
+A component to enable the use of images.
 
-An Example:
+Props:
+  - src
+  - height
+  - width
+  - fullWidth
 
-```
-<SimpleDnD
-  ...
-  LastTileTemplate={
-    () => (
-      <div
-        onClick={myClickEvent}
-      >
-        <h4>
-          Add another item!
-        </h4>
-      </div>
-    )
-  }
-/>
+#### src
+Accepts any form of image for the source.
 
-```
+#### height
+This is a prop of type number, sets the max height
+
+#### width
+This is a prop of type number, sets the max width
+
+#### fullWidth
+This is a prop of type bool, it will tell the coord element that you want it to span the full screen.
+This must be used in combination with the fullWidth prop within the Coord and Positional components.

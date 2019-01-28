@@ -3,8 +3,13 @@ import PropTypes from 'prop-types';
 
 import { getViewportWidth } from './helpers';
 
-export default function Img({ src, height, width, className }) {
-
+export default function Img({
+  src,
+  height,
+  width,
+  className,
+  fullWidth,
+}) {
   const [maxWidth, setMaxWidth] = useState(width);
 
   const resize = () => {
@@ -31,10 +36,10 @@ export default function Img({ src, height, width, className }) {
       className={`positional-react-animations-img ${className}`}
       src={src}
       style={{
-        maxHeight: height,
-        maxWidth,
+        maxHeight: fullWidth ? '5000px' : height,
+        maxWidth: fullWidth ? '100vw' : maxWidth,
         height: 'auto',
-        width: 'auto',
+        width: fullWidth ? '100vw' : 'auto',
         margin: '0',
         display: 'block',
       }}
@@ -48,11 +53,13 @@ Img.propTypes = {
   height: PropTypes.number,
   width: PropTypes.number,
   className: PropTypes.any,
+  fullWidth: PropTypes.bool,
 };
 
 Img.defaultProps = {
   src: null,
   height: 1300,
   width: 1300,
+  fullWidth: false,
   className: null,
 };

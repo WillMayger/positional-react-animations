@@ -10,6 +10,7 @@ export default function Coord({
   medias,
   shadow,
   intense,
+  fullWidth,
 }) {
   const [left, setLeft] = useState(0);
   const [top, setTop] = useState(0);
@@ -74,7 +75,7 @@ export default function Coord({
       }
 
       <div
-        className="positional-react-animations-coord-container"
+        className={fullWidth ? 'positional-react-animations-coord-containerFull' : 'positional-react-animations-coord-container'}
         style={{
           left: `${coordX + -left}%`,
           top: `${coordY + -top}%`,
@@ -94,6 +95,7 @@ Coord.propTypes = {
   medias: PropTypes.array,
   shadow: PropTypes.bool,
   intense: PropTypes.bool,
+  fullWidth: PropTypes.bool,
 };
 
 Coord.defaultProps = {
@@ -104,4 +106,5 @@ Coord.defaultProps = {
   medias: [],
   shadow: false,
   intense: false,
+  fullWidth: false,
 };

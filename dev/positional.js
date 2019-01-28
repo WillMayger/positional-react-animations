@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './positional.css';
+import CoordComp from './coord';
+import ImgComp from './img';
 
 export default function Positional({
   children,
@@ -62,3 +64,6 @@ Positional.defaultProps = {
   cursorEvent: false,
   fullWidth: false,
 };
+
+export const Coord = CoordComp;
+export const Img = ImgComp;

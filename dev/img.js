@@ -13,6 +13,10 @@ export default class Img extends React.Component {
     window.addEventListener('resize', this.resize);
   }
 
+  componentDidUpdate() {
+    this.resize();
+  }
+
   componentWillUnmount() {
     window.removeEventListener('resize', this.resize);
   }
@@ -31,13 +35,19 @@ export default class Img extends React.Component {
     // vpw = 1300
     const breakPoint = 1600;
     const sum = width * (1 - ((breakPoint - nextvpw) / 1000));
-    if (nextvpw <= breakPoint && vpw > 768 && maxWidth !== sum) {
+    if (maxWidth === 0) {
+      this.setState({ maxWidth: sum <= 0 ? width : sum });
+      return;
+    }
+
+    if (nextvpw <= breakPoint && vpw > 768 && maxWidth !== sum && sum !== 0) {
       this.setState({ maxWidth: sum });
+      return;
     }
     if (vpw > 768) return;
 
     const sumMob = (width * (1 - ((768 - vpw) / 1000))) * 0.6;
-    if (vpw <= 768 && maxWidth !== sumMob) {
+    if (vpw <= 768 && maxWidth !== sumMob  && sum !== sumMob) {
       this.setState({ maxWidth: sumMob });
     }
   }

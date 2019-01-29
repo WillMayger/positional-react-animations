@@ -104,9 +104,10 @@ Props:
  - x
  - y
  - fullWidth
- - medias,
- - shadow,
- - intense,
+ - medias
+ - shadow
+ - intense
+ - velocity
 
  #### x, y
  The x / y props are used to plot the position of the component.
@@ -135,6 +136,9 @@ This is a prop of type bool, defining this prop will create a shadow effect on t
 
 #### intense
 This is a prop of type bool, Adds more depth to the shadows on the coord.
+
+#### velocity
+This is a prop type of number, You can use this to control the speed / velocity of the animation effect
 
 
 ### `Img`

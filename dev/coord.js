@@ -46,10 +46,11 @@ export default class Coord extends React.Component {
         x,
         y,
         parentRef,
+        velocity,
       } = this.props;
 
       if (parentRef) {
-        const speed = ((x * y) / 3) + 50;
+        const speed = velocity === false ? ((x * y) / 3) + 50 : velocity;
 
         const viewPortHeight = getViewportHeight();
         const viewPortWidth = getViewportWidth();
@@ -139,6 +140,7 @@ Coord.propTypes = {
   shadow: PropTypes.bool,
   intense: PropTypes.bool,
   fullWidth: PropTypes.bool,
+  velocity: PropTypes.number,
 };
 
 Coord.defaultProps = {
@@ -150,4 +152,5 @@ Coord.defaultProps = {
   shadow: false,
   intense: false,
   fullWidth: false,
+  velocity: false,
 };

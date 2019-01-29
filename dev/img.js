@@ -19,19 +19,26 @@ export default class Img extends React.Component {
 
   resize = () => {
     const {
-      width,
-    } = this.props;
-
-    const {
       maxWidth,
     } = this.state;
 
-    let vpw = getViewportWidth();
-    vpw = vpw < 1300 ? 1300 : vpw;
+    const {
+      width,
+    } = this.props;
+
+    const vpw = getViewportWidth();
+    const nextvpw = vpw < 1300 ? 1300 : vpw;
+    // vpw = 1300
     const breakPoint = 1600;
-    const sum = width * (1 - ((breakPoint - vpw) / 1000));
-    if (vpw <= breakPoint && maxWidth !== sum) {
+    const sum = width * (1 - ((breakPoint - nextvpw) / 1000));
+    if (nextvpw <= breakPoint && vpw > 768 && maxWidth !== sum) {
       this.setState({ maxWidth: sum });
+    }
+    if (vpw > 768) return;
+
+    const sumMob = (width * (1 - ((768 - vpw) / 1000))) * 0.6;
+    if (vpw <= 768 && maxWidth !== sumMob) {
+      this.setState({ maxWidth: sumMob });
     }
   }
 

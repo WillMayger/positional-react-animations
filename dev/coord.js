@@ -41,32 +41,34 @@ export default class Coord extends React.Component {
   }
 
   mouseMove = (e) => {
-    const {
-      x,
-      y,
-      parentRef,
-    } = this.props;
+    requestAnimationFrame(() => {
+      const {
+        x,
+        y,
+        parentRef,
+      } = this.props;
 
-    if (parentRef) {
-      const speed = ((x * y) / 3) + 50;
+      if (parentRef) {
+        const speed = ((x * y) / 3) + 50;
 
-      const viewPortHeight = getViewportHeight();
-      const viewPortWidth = getViewportWidth();
+        const viewPortHeight = getViewportHeight();
+        const viewPortWidth = getViewportWidth();
 
-      const midpointX = viewPortWidth / 2;
-      const midpointY = viewPortHeight / 2;
+        const midpointX = viewPortWidth / 2;
+        const midpointY = viewPortHeight / 2;
 
-      const eventX = e.pageX;
-      const eventY = e.pageY - parentRef.current.offsetTop;
+        const eventX = e.pageX;
+        const eventY = e.pageY - parentRef.current.offsetTop;
 
-      const relativeX = (eventX - midpointX) / speed;
-      const relativeY = (eventY - midpointY) / speed;
+        const relativeX = (eventX - midpointX) / speed;
+        const relativeY = (eventY - midpointY) / speed;
 
-      this.setState({
-        top: relativeY,
-        left: relativeX,
-      });
-    }
+        this.setState({
+          top: relativeY,
+          left: relativeX,
+        });
+      }
+    });
   }
 
   render() {

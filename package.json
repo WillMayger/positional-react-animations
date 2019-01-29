@@ -1,6 +1,6 @@
 {
   "name": "positional-react-animations",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Positional based animations for react made simple and easy, just supply coordinates.",
   "main": "build/positional.js",
   "scripts": {

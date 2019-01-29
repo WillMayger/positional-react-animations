@@ -2,6 +2,10 @@
 
 #### A very easy package to create cool cursor based animations for react.
 
+[Demo of animation](https://atomizedobjects.com/custom/tutorials/demo/positional-react-animation/)
+
+[Click here to see full blog post about animation (https://atomizedobjects.com/blog/react/tutorial-creating-reactjs-animations-react-hooks/)](https://atomizedobjects.com/blog/react/tutorial-creating-reactjs-animations-react-hooks/)
+
 ## Contents.
  - Guide
  - API / Props
